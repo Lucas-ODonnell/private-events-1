@@ -29,6 +29,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Simple Form
 gem 'simple_form', '~> 5.0', '>= 5.0.3'
 
+# Bulma CSS Framework
+gem 'bulma-rails', '~> 0.9.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -53,8 +56,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   # Guard & Guard-RSpec
-  # gem 'guard', '~> 2.16', '>= 2.16.2'
-  # gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
+  gem 'guard', '~> 2.16', '>= 2.16.2'
+  gem 'guard-rspec', '~> 4.7', '>= 4.7.3', require: false
+  gem 'guard-livereload', '~> 2.5', '>= 2.5.2', require: false
 end
 
 group :test do
