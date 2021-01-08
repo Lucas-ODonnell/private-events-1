@@ -26,11 +26,16 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# Simple Form
+gem 'simple_form', '~> 5.0', '>= 5.0.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record in dev & test
   gem 'sqlite3', '~> 1.4'
+  # Testing with RSpec
+  gem 'rspec-rails', '~> 4.0.1'
 end
 
 group :production do
@@ -47,6 +52,9 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # Guard & Guard-RSpec
+  # gem 'guard', '~> 2.16', '>= 2.16.2'
+  # gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
 end
 
 group :test do
