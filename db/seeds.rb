@@ -70,3 +70,16 @@ Event.create!(creator_id: '2',
               location: "My house",
               start_time: DateTime.new(2021,05,29,11),
               end_time: DateTime.new(2021,05,29,14))
+
+Invitation.create!(event_id: '1',
+                   attendee_id: '2')
+
+Invitation.create!(event_id: '1',
+                   attendee_id: '3')
+
+Invitation.create!(event_id: '1',
+                   attendee_id: '4')
+
+Invitation.create!(event_id: '1',
+                   attendee_id: '5')
+
