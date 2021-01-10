@@ -1,26 +1,22 @@
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
-      <div class="column is-6">
+      <div class="column is-9">
         <h2 class="title is-3">Account Set-Up:</h2>
-        <p>
-          <%= @user.email %>
-          <%= link_to "Edit", edit_user_registration_path %>
-        </p>
-
-        <h2 class="title is-3">Created Parties:</h2>
-        <% @user.created_events.each do |event| %>
-          <div>
-            <p><%= event.title %></p>
-            <p><%= event.description %></p>
-            <p><%= event.location %></p>
-            <% if (event.start_time.to_date - event.end_time.to_date).to_i == 0 %>
-              <p><%= event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> - <%= event.end_time.strftime("%l:%M %P")%></p>
-            <% else %>
-              <p><%= event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> - <%= event.end_time.strftime("%b %-d, %Y at %l:%M %P")%></p>
-            <% end %>
+        <div class="columns">
+          <div class="column">
+            <div class="box has-background-light">
+              <p>
+                <%= @user.email %>
+                <%= link_to "Edit Account", edit_user_registration_path %>
+              </p>
+            </div>
           </div>
-        <% end %>
+        </div>
+        <h2 class="title is-3">Your Parties:</h2>
+        <div class="columns is-multiline">
+          <%= render @user.created_events %>
+        </div>
       </div>
     </div>
   </div>
