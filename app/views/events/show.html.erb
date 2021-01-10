@@ -3,9 +3,14 @@
     <div class="columns is-centered">
       <div class="column is-6">
         <h2 class="title is-2"><%= @event.title %></h2>
+        <p><%= @event.creator.name %></p>
         <p><%= @event.description %></p>
         <p><%= @event.location %></p>
-        <p><%= @event.start_time %> to <%= @event.end_time %></p>
+        <% if (@event.start_time.to_date - @event.end_time.to_date).to_i == 0 %>
+          <p><%= @event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> - <%= @event.end_time.strftime("%l:%M %P")%></p>
+        <% else %>
+          <p><%= @event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> - <%= @event.end_time.strftime("%b %-d, %Y at %l:%M %P")%></p>
+        <% end %>
       </div>
     </div>
   </div>

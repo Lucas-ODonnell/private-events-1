@@ -1,17 +1,20 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show]
+  before_action :authenticate_user!, only: [:index, :new, :create, :show]
 
-  def new
-    @event = Event.new
+  def index
+    @events = Event.all
   end
 
   def show
     @event = Event.find(params[:id])
   end
 
+  def new
+    @event = Event.new
+  end
+
   def create
-    @event = Event.new(event_params)
-    @event.creator = current_user
+    @event = current_user.created_events.build(event_params)
 
     if @event.save
       flash[:notice] = "Your event was created!"
