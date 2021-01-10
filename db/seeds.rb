@@ -37,15 +37,36 @@ User.create!(name: 'Elsie Carson',
              password_confirmation: 'ecPassword')
 
 Event.create!(creator_id: '1',
-              title: "New Year's Day Party",
+              title: "New Year's Party",
               description: 'Kick off the new year with friends!',
-              location: 'Our house',
-              start_time: DateTime.new(2022,01,01,14),
-              end_time: DateTime.new(2022,01,01,18))
+              location: 'My house',
+              start_time: DateTime.new(2021,12,31,20),
+              end_time: DateTime.new(2022,01,01,02))
 
-Event.create!(creator_id: '2',
+Event.create!(creator_id: '1',
               title: "Valentine's Day Celebration",
               description: 'Party for everyone, not just couples',
-              location: "Granny's House",
+              location: "My house",
               start_time: DateTime.new(2021,02,14,18),
-              end_time: DateTime.new(2022,01,01,22))
+              end_time: DateTime.new(2021,02,14,22))
+
+Event.create!(creator_id: '2',
+              title: "March Madness Open House",
+              description: 'Basketball and Board Games',
+              location: "My house",
+              start_time: DateTime.new(2021,03,9,10),
+              end_time: DateTime.new(2021,03,9,22))
+
+Event.create!(creator_id: '2',
+              title: "Spring Garden Party",
+              description: 'Lawn games for everyone',
+              location: "My house",
+              start_time: DateTime.new(2021,04,15,10),
+              end_time: DateTime.new(2021,04,15,16))
+
+Event.create!(creator_id: '2',
+              title: "Memorial Day Cookout",
+              description: 'Burgers & Hot Dogs. BYOB',
+              location: "My house",
+              start_time: DateTime.new(2021,05,29,11),
+              end_time: DateTime.new(2021,05,29,14))
