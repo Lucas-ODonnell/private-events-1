@@ -40,8 +40,8 @@ Event.create!(creator_id: '1',
               title: "New Year's Party",
               description: 'Kick off the new year with friends!',
               location: 'My house',
-              start_time: DateTime.new(2021,12,31,20),
-              end_time: DateTime.new(2022,01,01,02))
+              start_time: DateTime.new(2020,12,31,20),
+              end_time: DateTime.new(2021,01,01,02))
 
 Event.create!(creator_id: '1',
               title: "Valentine's Day Celebration",
@@ -54,8 +54,8 @@ Event.create!(creator_id: '2',
               title: "March Madness Open House",
               description: 'Basketball and Board Games',
               location: "My house",
-              start_time: DateTime.new(2021,03,9,10),
-              end_time: DateTime.new(2021,03,9,22))
+              start_time: DateTime.new(2020,03,9,10),
+              end_time: DateTime.new(2020,03,9,22))
 
 Event.create!(creator_id: '2',
               title: "Spring Garden Party",
