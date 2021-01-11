@@ -41,12 +41,20 @@
       <div class="navbar-menu" id="navbarPrivateEvents" >
         <div class="navbar-start">
         </div>
-        <div class="navbar-end">
           <% if user_signed_in? %>
-            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "navbar-item" %>
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Events
+              </a>
+              <div class="navbar-dropdown">
+                <%= link_to 'Create an Event', new_event_path, class: "navbar-item" %>
+                <%= link_to 'View all Events', events_path, class: "navbar-item" %>
+              </div>
+            </div>
             <div class="navbar-item">
               <div class="buttons">
-                <%#= link_to 'New Event', new_event_path, class: "button is-light navbar-item" %>
+                <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "button is-light navbar-item" %>
               </div>
             </div>
           <% else %>
