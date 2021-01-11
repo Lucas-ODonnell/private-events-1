@@ -38,6 +38,9 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 # Amazing Print for console print out
 gem "amazing_print", "~> 1.2"
 
+# Font Awesome for Icons
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.6'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
