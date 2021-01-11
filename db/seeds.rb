@@ -83,3 +83,51 @@ Invitation.create!(event_id: '1',
 Invitation.create!(event_id: '1',
                    attendee_id: '5')
 
+Invitation.create!(event_id: '2',
+                   attendee_id: '2')
+
+Invitation.create!(event_id: '2',
+                   attendee_id: '3')
+
+Invitation.create!(event_id: '2',
+                   attendee_id: '4')
+
+Invitation.create!(event_id: '2',
+                   attendee_id: '5')
+
+Invitation.create!(event_id: '3',
+                   attendee_id: '1')
+
+Invitation.create!(event_id: '3',
+                   attendee_id: '3')
+
+Invitation.create!(event_id: '3',
+                   attendee_id: '4')
+
+Invitation.create!(event_id: '3',
+                   attendee_id: '5')
+
+Invitation.create!(event_id: '4',
+                   attendee_id: '1')
+
+Invitation.create!(event_id: '4',
+                   attendee_id: '3')
+
+Invitation.create!(event_id: '4',
+                   attendee_id: '4')
+
+Invitation.create!(event_id: '4',
+                   attendee_id: '5')
+
+Invitation.create!(event_id: '5',
+                   attendee_id: '1')
+
+Invitation.create!(event_id: '5',
+                   attendee_id: '3')
+
+Invitation.create!(event_id: '5',
+                   attendee_id: '4')
+
+Invitation.create!(event_id: '5',
+                   attendee_id: '5')
+

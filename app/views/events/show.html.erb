@@ -11,6 +11,12 @@
         <% else %>
           <p><%= @event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> - <%= @event.end_time.strftime("%b %-d, %Y at %l:%M %P")%></p>
         <% end %>
+        <p>Invited Guests:</p>
+        <ul>
+          <% @event.invitations.each do |invite| %>
+            <li><%= invite.attendee.name %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
