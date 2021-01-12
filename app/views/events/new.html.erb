@@ -3,56 +3,6 @@
     <div class="columns is-centered">
       <div class="column is-6">
         <h2 class="title is-2">New Event</h2>
-        <%= simple_form_for(@event) do |f| %>
-          <%= f.error_notification %>
-          <div class="field">
-            <%= f.input :title, 
-                        required: true, 
-                        autofocus: true, 
-                        input_html: { autocomplete: "event title", class: "input" }, 
-                        wrapper: false, 
-                        label_html: { class: "label" } %>
-          </div>
-          <div class="field">
-            <%= f.input :description, 
-                        required: false, 
-                        input_html: { autocomplete: "description", class: "input" }, 
-                        wrapper: false, 
-                        label_html: { class: "label" } %>
-          </div>
-          <div class="field">
-          <div class="field">
-            <%= f.input :location, 
-                        required: true, 
-                        input_html: { autocomplete: "location", class: "input" }, 
-                        wrapper: false, 
-                        label_html: { class: "label" } %>
-          </div>
-          <div class="field">
-            <%= f.input :start_time, 
-                        required: true, 
-                        input_html: { class: "input" }, 
-                        :ampm => true,
-                        :order => [:month, :day, :year, :hour, :minute],
-                        :minute_step => 5,
-                        datetime_separator: " @ ",
-                        wrapper: false, 
-                        label_html: { class: "label" } %>
-          </div>
-          <div class="field">
-            <%= f.input :end_time, 
-                        required: true, 
-                        input_html: { class: "input" }, 
-                        :order => [:month, :day, :year, :hour, :minute],
-                        :minute_step => 5,
-                        datetime_separator: " @ ",
-                        wrapper: false, 
-                        label_html: { class: "label" } %>
-          </div>
-          <div class="field">
-            <%= f.button :submit, "Create New Event", class:"button is-info is-fullwidth" %>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>
