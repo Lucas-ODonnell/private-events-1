@@ -3,20 +3,54 @@
     <div class="columns is-centered">
       <div class="column is-6">
         <h2 class="title is-2"><%= @event.title %></h2>
-        <p><%= @event.creator.name %></p>
-        <p><%= @event.description %></p>
-        <p><%= @event.location %></p>
-        <% if (@event.start_time.to_date - @event.end_time.to_date).to_i == 0 %>
-          <p><%= @event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> - <%= @event.end_time.strftime("%l:%M %P")%></p>
-        <% else %>
-          <p><%= @event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> - <%= @event.end_time.strftime("%b %-d, %Y at %l:%M %P")%></p>
-        <% end %>
-        <p>Invited Guests:</p>
-        <ul>
-          <% @event.invitations.each do |invite| %>
-            <li><%= invite.attendee.name %></li>
+        <div class="block">
+          <h4 class="subtitle is-4">
+            Host: 
+            <%= @event.creator.name %>
+          </h4>
+        </div>
+        <div class="block">
+          <% if !@event.description.blank? %>
+            <p>
+              <span class="icon">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </span>
+              <%= @event.description %>
+            </p>
           <% end %>
-        </ul>
+          <p>
+            <span class="icon">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+            </span>
+            <%= @event.location %>
+          </p>
+          <p>
+            <span class="icon">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+            </span>
+            <%= @event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> - 
+            <% if (@event.start_time.to_date - @event.end_time.to_date).to_i == 0 %>
+              <%= @event.end_time.strftime("%l:%M %P")%>
+            <% else %>
+              <%= @event.end_time.strftime("%b %-d, %Y at %l:%M %P")%>
+            <% end %>
+          </p>
+        </div>
+        <div class="block">
+          <p><strong>Guest List:</strong></p>
+          <ul>
+            <% @event.invitations.each do |invite| %>
+              <li><%= invite.attendee.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% if @event.creator == current_user %>
+          <div class="block">
+            <div class="buttons">
+              <%= link_to 'Update Event', edit_event_path, class: "button is-dark is-outlined is-fullwidth" %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
