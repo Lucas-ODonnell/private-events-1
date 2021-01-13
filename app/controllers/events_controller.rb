@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create, :show]
+  before_action :authenticate_user!, only: [:new, :create, :show]
 
   def index
     @events = Event.all

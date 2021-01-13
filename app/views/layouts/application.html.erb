@@ -21,16 +21,10 @@
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-dark px-4" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <%= link_to root_path, class: "navbar-item" do %>
-            <h1 class="title is-2 has-text-light">
-              <% if user_signed_in? %>
-                <%=current_user.name %>'s Events
-              <% else %>
-                Private Events
-              <% end %>
-            </h1>
+            <h1 class="title is-2 has-text-light">Private Events</h1>
         <% end %>
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"  data-target="navbarPrivateEvents">
           <span aria-hidden="true"></span>
@@ -45,11 +39,14 @@
           <% if user_signed_in? %>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
-                Events
+                <%= current_user.name %>'s Events
               </a>
               <div class="navbar-dropdown">
-                <%= link_to 'Create an Event', new_event_path, class: "navbar-item" %>
+                <%= link_to 'My Events', user_path(id: current_user.id), class: "navbar-item" %>
+                <%= link_to 'Create a new Event', new_event_path, class: "navbar-item" %>
                 <%= link_to 'View all Events', events_path, class: "navbar-item" %>
+                <hr class="dropdown-divider">
+                <%= link_to 'Update Account', edit_user_registration_path(id: current_user.id), class: "navbar-item" %>
               </div>
             </div>
             <div class="navbar-item">

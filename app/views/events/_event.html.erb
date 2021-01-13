@@ -4,19 +4,6 @@
       <%= event.title %>
     </h4>
     <div class="block">
-      <p class="subtitle is-5">
-        <%= event.description %>
-      </p>
-    </div>
-    <div class="block">
-      <p>
-        <span class="icon">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
-        </span>
-        <%= event.location %>
-      </p>
-    </div>
-    <div class="block">
       <p>
         <span class="icon">
           <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -28,6 +15,9 @@
           <%= event.end_time.strftime("%b %-d, %Y at %l:%M %P")%>
         <% end %>
       </p>
+    </div>
+    <div class="buttons">
+      <%= link_to 'Event Details', event_path(id: event.id), class: "button is-dark is-outlined is-fullwidth" %>
     </div>
   </div>
 </div>

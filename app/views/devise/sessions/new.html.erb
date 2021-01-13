@@ -9,14 +9,16 @@
             <%= f.label :email %><br />
             <%= f.email_field :email, 
                               autofocus: true, 
-                              autocomplete: "email", 
+                              required: true,
+                              placeholder: "user@example.com", 
                               class: "input" %>
           </div>
 
           <div class="field">
             <%= f.label :password %><br />
             <%= f.password_field :password, 
-                                 autocomplete: "current-password",
+                                 placeholder: "******",
+                                 required: true, 
                                  class: "input" %>
           </div>
 
@@ -31,8 +33,6 @@
             <%= f.submit "Log in", class:"button is-info is-fullwidth" %>
           </div>
         <% end %>
-        
-        <%= render "devise/shared/links" %>
       </div>
     </div>
   </div>

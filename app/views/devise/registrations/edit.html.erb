@@ -9,15 +9,12 @@
           <div class="field">
             <%= f.label :name %><br />
             <%= f.text_field :name, 
-                              autofocus: true, 
-                              autocomplete: "name", 
                               class: "input" %>
           </div>
 
           <div class="field">
             <%= f.label :email %><br />
             <%= f.email_field :email, 
-                              autocomplete: "email", 
                               class: "input" %>
           </div>
 
@@ -28,7 +25,6 @@
           <div class="field">
             <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
             <%= f.password_field :password, 
-                                 autocomplete: "new-password",
                                  class: "input" %>
             <% if @minimum_password_length %>
               <br />
@@ -39,14 +35,13 @@
           <div class="field">
             <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, 
-                                 autocomplete: "new-password",
                                  class: "input" %>
           </div>
 
           <div class="field">
             <%= f.label :current_password %> <i>(to confirm your changes)</i><br />
             <%= f.password_field :current_password, 
-                                 autocomplete: "current-password",
+                                 required: true,
                                  class: "input" %>
           </div>
 
@@ -54,10 +49,6 @@
             <%= f.submit "Update", class:"button is-info is-fullwidth" %>
           </div>
         <% end %>
-
-        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-        <%= link_to "Back", :back %>
       </div>
     </div>
   </div>

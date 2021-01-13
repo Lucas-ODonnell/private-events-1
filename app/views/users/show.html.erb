@@ -2,18 +2,7 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-9">
-        <h3 class="title is-3">Account Set-Up:</h3>
-        <div class="columns">
-          <div class="column">
-            <div class="box has-background-light">
-              <p>
-                <%= @user.email %>
-                <%= link_to "Edit Account", edit_user_registration_path %>
-              </p>
-            </div>
-          </div>
-        </div>
-        <h3 class="title is-3">Your Parties:</h3>
+        <h3 class="title is-3">My Parties:</h3>
         <h4 class="title is-4">Upcoming</h4>
         <div class="columns is-multiline">
           <%= render @user.created_events.upcoming %>
@@ -22,7 +11,8 @@
         <div class="columns is-multiline">
           <%= render @user.created_events.past %>
         </div>
-        <h3 class="title is-3">Your Party Invitations:</h3>
+        <hr>
+        <h3 class="title is-3">My Invited Parties:</h3>
         <h4 class="title is-4">Upcoming</h4>
         <div class="columns is-multiline">
           <%= render @user.attended_events.upcoming %>
