@@ -37,39 +37,47 @@ User.create!(name: 'Elsie Carson',
              password_confirmation: 'ecPassword')
 
 Event.create!(creator_id: '1',
-              title: "New Year's Party",
-              description: 'Kick off the new year with friends!',
-              location: 'My house',
-              start_time: DateTime.new(2020,12,31,20),
-              end_time: DateTime.new(2021,01,01,02))
-
-Event.create!(creator_id: '1',
               title: "Valentine's Day Celebration",
               description: 'Party for everyone, not just couples',
               location: "My house",
-              start_time: DateTime.new(2021,02,14,18),
-              end_time: DateTime.new(2021,02,14,22))
-
-Event.create!(creator_id: '2',
-              title: "March Madness Open House",
-              description: 'Basketball and Board Games',
-              location: "My house",
-              start_time: DateTime.new(2020,03,9,10),
-              end_time: DateTime.new(2020,03,9,22))
+              start_time: Time.zone.local(2021, 2, 14, 18),
+              end_time: Time.zone.local(2021, 2, 14, 22))
 
 Event.create!(creator_id: '2',
               title: "Spring Garden Party",
               description: 'Lawn games for everyone',
               location: "My house",
-              start_time: DateTime.new(2021,04,15,10),
-              end_time: DateTime.new(2021,04,15,16))
+              start_time: Time.zone.local(2021, 4, 15, 10, 30),
+              end_time: Time.zone.local(2021, 4, 15, 16))
 
 Event.create!(creator_id: '2',
               title: "Memorial Day Cookout",
               description: 'Burgers & Hot Dogs. BYOB',
               location: "My house",
-              start_time: DateTime.new(2021,05,29,11),
-              end_time: DateTime.new(2021,05,29,14))
+              start_time: Time.zone.local(2021, 5, 29, 11),
+              end_time: Time.zone.local(2021, 5, 29, 14, 30))
+
+past_events = [ { 
+                creator_id: '1',
+                title: "New Year's Party",
+                description: 'Kick off the new year with friends!',
+                location: 'My house',
+                start_time: Time.zone.local(2020, 12, 31, 20),
+                end_time: Time.zone.local(2021, 1, 1, 1, 30) 
+              }, 
+              { creator_id: '2',
+                title: "March Madness Open House",
+                description: 'Basketball and Board Games',
+                location: "My house",
+                start_time: Time.zone.local(2020, 3, 9, 10),
+                end_time: Time.zone.local(2020, 3, 9, 22)
+              }
+             ]
+
+past_events.each do |event|
+  new_event = Event.new(event)
+  new_event.save!(validate: false)
+end
 
 Invitation.create!(event_id: '1',
                    attendee_id: '2')
