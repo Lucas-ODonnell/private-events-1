@@ -36,41 +36,46 @@ User.create!(name: 'Elsie Carson',
              password: 'ecPassword',
              password_confirmation: 'ecPassword')
 
+User.create!(name: 'Example User',
+             email: 'user@example.com',
+             password: 'password',
+             password_confirmation: 'password')
+
 Event.create!(creator_id: '1',
-              title: "Valentine's Day Celebration",
-              description: 'Party for everyone, not just couples',
-              location: "My house",
-              start_time: Time.zone.local(2021, 2, 14, 18),
-              end_time: Time.zone.local(2021, 2, 14, 22))
+              title: 'Ice Skating Party',
+              description: 'We will ice skate first and then warm up over hot drinks at Starbucks',
+              location: 'Millennium Park',
+              start_time: Time.zone.local(2022, 2, 1, 18),
+              end_time: Time.zone.local(2022, 2, 1, 22))
 
 Event.create!(creator_id: '2',
-              title: "Spring Garden Party",
-              description: 'Lawn games for everyone',
-              location: "My house",
-              start_time: Time.zone.local(2021, 4, 15, 10, 30),
-              end_time: Time.zone.local(2021, 4, 15, 16))
+              title: 'Picnic Party',
+              description: 'We will explore the zoo and enjoy a sack luck together',
+              location: 'Brookfield Zoo',
+              start_time: Time.zone.local(2022, 4, 15, 10, 30),
+              end_time: Time.zone.local(2022, 4, 15, 16))
 
-Event.create!(creator_id: '2',
-              title: "Memorial Day Cookout",
-              description: 'Burgers & Hot Dogs. BYOB',
-              location: "My house",
-              start_time: Time.zone.local(2021, 5, 29, 11),
-              end_time: Time.zone.local(2021, 5, 29, 14, 30))
+Event.create!(creator_id: '7',
+              title: 'Memorial Day Cookout',
+              description: 'We will grill hamburgers & hot dogs. Please bring a side dish to share.',
+              location: 'Grant Park',
+              start_time: Time.zone.local(2022, 5, 29, 11),
+              end_time: Time.zone.local(2022, 5, 29, 14, 30))
 
 past_events = [ { 
                 creator_id: '1',
                 title: "New Year's Party",
-                description: 'Kick off the new year with friends!',
+                description: 'Kick off the new year with friends and family!',
                 location: 'My house',
                 start_time: Time.zone.local(2020, 12, 31, 20),
                 end_time: Time.zone.local(2021, 1, 1, 1, 30) 
               }, 
-              { creator_id: '2',
-                title: "March Madness Open House",
-                description: 'Basketball and Board Games',
-                location: "My house",
-                start_time: Time.zone.local(2020, 3, 9, 10),
-                end_time: Time.zone.local(2020, 3, 9, 22)
+              { creator_id: '7',
+                title: 'Birthday Party',
+                description: 'We will start the party in the Funhouse Maze and end with Gelato!',
+                location: 'Navy Pier',
+                start_time: Time.zone.local(2020, 3, 9, 13),
+                end_time: Time.zone.local(2020, 3, 9, 17)
               }
              ]
 
@@ -91,6 +96,12 @@ Invitation.create!(event_id: '1',
 Invitation.create!(event_id: '1',
                    attendee_id: '5')
 
+Invitation.create!(event_id: '1',
+                   attendee_id: '6')
+
+Invitation.create!(event_id: '1',
+                   attendee_id: '7')
+
 Invitation.create!(event_id: '2',
                    attendee_id: '1')
 
@@ -103,8 +114,17 @@ Invitation.create!(event_id: '2',
 Invitation.create!(event_id: '2',
                    attendee_id: '5')
 
+Invitation.create!(event_id: '2',
+                   attendee_id: '6')
+
+Invitation.create!(event_id: '2',
+                   attendee_id: '7')
+
 Invitation.create!(event_id: '3',
                    attendee_id: '1')
+
+Invitation.create!(event_id: '3',
+                  attendee_id: '2')
 
 Invitation.create!(event_id: '3',
                    attendee_id: '3')
@@ -114,6 +134,9 @@ Invitation.create!(event_id: '3',
 
 Invitation.create!(event_id: '3',
                    attendee_id: '5')
+
+Invitation.create!(event_id: '3',
+                   attendee_id: '6')
 
 Invitation.create!(event_id: '4',
                    attendee_id: '2')
@@ -127,8 +150,17 @@ Invitation.create!(event_id: '4',
 Invitation.create!(event_id: '4',
                    attendee_id: '5')
 
+Invitation.create!(event_id: '4',
+                   attendee_id: '6')
+
+Invitation.create!(event_id: '4',
+                   attendee_id: '7')
+
 Invitation.create!(event_id: '5',
                    attendee_id: '1')
+
+Invitation.create!(event_id: '5',
+                    attendee_id: '2')
 
 Invitation.create!(event_id: '5',
                    attendee_id: '3')
@@ -138,4 +170,8 @@ Invitation.create!(event_id: '5',
 
 Invitation.create!(event_id: '5',
                    attendee_id: '5')
+
+Invitation.create!(event_id: '5',
+                   attendee_id: '6')
+
 
