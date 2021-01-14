@@ -23,7 +23,7 @@
     <% end %>
     <nav class="navbar is-dark px-4" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <%= link_to root_path, class: "navbar-item" do %>
+        <%= link_to events_path, class: "navbar-item" do %>
             <h1 class="title is-2 has-text-light">Private Events</h1>
         <% end %>
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"  data-target="navbarPrivateEvents">
@@ -44,9 +44,8 @@
               <div class="navbar-dropdown">
                 <%= link_to 'My Events', user_path(id: current_user.id), class: "navbar-item" %>
                 <%= link_to 'Create a new Event', new_event_path, class: "navbar-item" %>
-                <%= link_to 'View all Events', events_path, class: "navbar-item" %>
                 <hr class="dropdown-divider">
-                <%= link_to 'Update Account', edit_user_registration_path(id: current_user.id), class: "navbar-item" %>
+                <%= link_to 'View all Events', events_path, class: "navbar-item" %>
               </div>
             </div>
             <div class="navbar-item">
