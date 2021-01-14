@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :show]
+  before_action :correct_creator, only: [:edit, :update]
 
   def index
     @events = Event.all
@@ -48,5 +49,10 @@ class EventsController < ApplicationController
                                     :end_time, 
                                     :location, 
                                     :description)
-    end 
+    end
+
+    def correct_creator
+      @event = Event.find(params[:id])
+      redirect_to(root_url) unless current_user == @event.creator
+    end
 end
