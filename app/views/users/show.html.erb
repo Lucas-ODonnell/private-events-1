@@ -2,25 +2,41 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-9">
-        <h3 class="title is-3">My Parties:</h3>
-        <h4 class="title is-4">Upcoming</h4>
+        <h3 class="title is-3">My Parties</h3>
         <div class="columns is-multiline">
           <%= render @user.created_events.upcoming %>
         </div>
-        <h4 class="title is-4">Past</h4>
-        <div class="columns is-multiline">
-          <%= render @user.created_events.past %>
-        </div>
+        <h4 class="title is-4">Previous Parties</h4>
+        <% @user.created_events.past.each do |event| %>
+          <div>
+            <p>
+              <%= event.title %>
+                on 
+              <%= event.start_time.strftime("%b %-d, %Y")%>
+              <%= link_to event_path(id: event.id), :class=> "Users" do %>
+                  <i class="fa fa-info-circle" aria-hidden="true", target="_blank"></i>
+              <% end %>
+            </p>
+          </div>
+        <% end %>
         <hr>
-        <h3 class="title is-3">My Invited Parties:</h3>
-        <h4 class="title is-4">Upcoming</h4>
+        <h3 class="title is-3">My Invitations</h3>
         <div class="columns is-multiline">
           <%= render @user.attended_events.upcoming %>
         </div>
-        <h4 class="title is-4">Past</h4>
-        <div class="columns is-multiline">
-          <%= render @user.attended_events.past %>
-        </div>
+        <h4 class="title is-4">Previous Invitations</h4>
+        <% @user.attended_events.past.each do |event| %>
+          <div>
+            <p>
+              <%= event.title %>
+                on 
+              <%= event.start_time.strftime("%b %-d, %Y")%>
+              <%= link_to event_path(id: event.id), :class=> "Users" do %>
+                  <i class="fa fa-info-circle" aria-hidden="true", target="_blank"></i>
+              <% end %>
+            </p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

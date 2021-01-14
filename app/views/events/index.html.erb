@@ -6,10 +6,20 @@
         <div class="columns is-multiline">
           <%= render @events.upcoming %> 
         </div>
-        <h3 class="title is-3">All Past Events</h3>
-        <div class="columns is-multiline">
-          <%= render @events.past %> 
-        </div>
+        <hr>
+        <h4 class="title is-4">All Past Events</h4>
+        <% @events.past.each do |event| %>
+          <div>
+            <p>
+              <%= event.title %>
+                on 
+              <%= event.start_time.strftime("%b %-d, %Y")%>
+              <%= link_to event_path(id: event.id), :class=> "Users" do %>
+                  <i class="fa fa-info-circle" aria-hidden="true", target="_blank"></i>
+              <% end %>
+            </p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
