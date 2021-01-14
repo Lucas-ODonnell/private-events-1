@@ -1,11 +1,16 @@
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2 class="has-text-danger"><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
+      <ul class="has-text-danger">
         <% @event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li>
+            <span class="icon">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            </span>
+            <%= error.full_message %>
+          </li>
         <% end %>
       </ul>
     </div>
