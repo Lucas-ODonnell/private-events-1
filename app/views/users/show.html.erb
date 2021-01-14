@@ -6,7 +6,7 @@
         <div class="columns is-multiline">
           <%= render @user.created_events.upcoming %>
         </div>
-        <h4 class="title is-4">Previous Parties</h4>
+        <h4 class="title is-4">Past Parties</h4>
         <% @user.created_events.past.each do |event| %>
           <div>
             <p>
@@ -24,7 +24,7 @@
         <div class="columns is-multiline">
           <%= render @user.attended_events.upcoming %>
         </div>
-        <h4 class="title is-4">Previous Invitations</h4>
+        <h4 class="title is-4">Past Invitations</h4>
         <% @user.attended_events.past.each do |event| %>
           <div>
             <p>
