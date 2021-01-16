@@ -20,8 +20,10 @@ class Event < ApplicationRecord
   validate :start_time_must_be_in_future, :end_time_must_be_after_start
 
   belongs_to :creator, class_name: 'User'
-  has_many :invitations, foreign_key: :event_id
+  has_many :invitations, foreign_key: :event_id, inverse_of: :event
   has_many :attendees, through: :invitations, source: :attendee
+
+  accepts_nested_attributes_for :invitations
   
   scope :upcoming, -> { where('start_time > ?', Time.zone.now) }
   scope :past, -> { where('end_time < ?', Time.zone.now) }

@@ -53,6 +53,25 @@
                           class: "input" %>
   </div>
 
+  <div class="field">
+    <%= f.label "Invitations" %><br />
+    <%# Do I need below 'invitations to be a column name in Event model? %>
+    <%= f.fields_for :invitations do |invite_form| %>
+      <%#= invite_form.select(:attendee_id, @user_options) %>
+      <%= invite_form.collection_check_boxes :attendee_id, @users, :id, :name do |option| %>
+        <p> 
+          <%= option.check_box %>
+          <%= option.label %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%# Do I need any hidden fields? %>
+  <%#= f.hidden_field :?_id, ?.id %>
+
+  <%# Do I need to be able to remove/delete? %>
+
   <div class="actions">
     <%= f.submit "Submit", class:"button is-link is-fullwidth" %>
   </div>

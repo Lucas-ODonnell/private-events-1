@@ -12,15 +12,22 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.invitations.build
+    # Remove the current user from this list?
+    @users = User.all
+    # @user_options = User.all.map{ |u| [ u.name, u.id ] }
   end
-
+  
   def create
     @event = current_user.created_events.build(event_params)
-
+    # @event.invitations.build(attendee_id: 'id')
+    
     if @event.save
       flash[:notice] = "Your event was created!"
       redirect_to @event
     else
+      raise 'hell'
+      @users = User.all
       render :new
     end
   end
@@ -48,7 +55,8 @@ class EventsController < ApplicationController
                                     :start_time, 
                                     :end_time, 
                                     :location, 
-                                    :description)
+                                    :description,
+                                    invitations_attributes: [:attendee_id => []])
     end
 
     def correct_creator
