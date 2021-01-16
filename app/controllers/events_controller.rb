@@ -15,13 +15,12 @@ class EventsController < ApplicationController
     # This tells the form to display the invitation section
     @event.invitations.build
     # Remove the current user from this list?
-    # @users = User.all
-    @user_options = User.all.map{ |u| [ u.name, u.id ] }
+    @users = User.all
+    # @user_options = User.all.map{ |u| [ u.name, u.id ] }
   end
   
   def create
 
-    @user_options = User.all.map{ |u| [ u.name, u.id ] }
     @event = current_user.created_events.build(event_params)
     # @event.invitations.build(attendee_id: 'id')
     
@@ -29,9 +28,10 @@ class EventsController < ApplicationController
       flash[:notice] = "Your event was created!"
       redirect_to @event
     else
-      # @users = User.all
+      # @user_options = User.all.map{ |u| [ u.name, u.id ] }
+      @users = User.all
       # byebug
-      raise 'hell'
+      # raise 'hell'
       render :new
     end
   end
@@ -60,7 +60,7 @@ class EventsController < ApplicationController
                                     :end_time, 
                                     :location, 
                                     :description,
-                                    invitations_attributes: [:attendee_id])
+                                    invitations_attributes: [:attendee_id => []])
     end
 
     def correct_creator
