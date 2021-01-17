@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     # This tells the form to display the invitation section
+    # IS THIS LINE CAUSING AN ISSUE???
     @event.invitations.build
     # Remove the current user from this list?
     @users = User.all
@@ -21,7 +22,11 @@ class EventsController < ApplicationController
   
   def create
 
+    # WTF IS THIS LINE DOING!!!
     @event = current_user.created_events.build(event_params)
+    # @event = Event.new(event_params)
+    # @event.creator = current_user
+    # @event.invitations.build(event_params)
     # @event.invitations.build(attendee_id: 'id')
     
     if @event.save

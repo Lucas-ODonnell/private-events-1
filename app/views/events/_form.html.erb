@@ -57,17 +57,15 @@
   <div class="field">
     <%= f.label "Invitations" %><br />
     <%# Do I need below 'invitations to be a column name in Event model? %>
-    <%# 3.times do %>
-      <%= f.fields_for :invitations do |invite_form| %>
-        <%#= invite_form.select(:attendee_id, @user_options) %>
-        <%= invite_form.collection_check_boxes :attendee_id, @users, :id, :name, { include_hidden: false } do |option| %>
-          <p> 
-            <%= option.check_box %>
-            <%= option.label %>
-          </p>
-        <% end %>
+    <%= f.fields_for :invitations do |invite_form| %>
+      <%#= invite_form.select(:attendee_id, @user_options) %>
+      <%= invite_form.collection_check_boxes :attendee_id, @users, :id, :name, { include_hidden: false } do |option| %>
+        <p> 
+          <%= option.check_box %>
+          <%= option.label %>
+        </p>
       <% end %>
-    <%# end %>
+    <% end %>
   </div>
 
   <%# Do I need any hidden fields? %>
