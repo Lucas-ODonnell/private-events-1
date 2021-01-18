@@ -57,6 +57,7 @@
   <div class="field">
     <%= f.label "Invitations" %><br />
     <%= f.fields_for :invitations do |invite_form| %>
+    <%# Do I want/need to hidden_field. Should I disable it? %>
       <%= invite_form.collection_check_boxes :attendee_id, @users, :id, :name, { checked: @event.attendee_ids } do |option| %>
         <p>
           <%= option.check_box %>

@@ -44,11 +44,20 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
-      # Need to remove/destroy invitations if un-checked
-      invitation_params[:invitations][:attendee_id].each do |attendee_id|
-        next if @event.attendees.ids.include?(attendee_id.to_i)
+      previous_attendees = @event.attendees.ids
+      new_attendees = invitation_params[:invitations][:attendee_id]
+      # Add invitations to new people
+      new_attendees.each do |attendee_id|
+        next if previous_attendees.include?(attendee_id.to_i)
 
         @event.invitations.create(attendee_id: attendee_id)
+      end
+      # Remove destroy invitations for un-checked
+      previous_attendees.each do |attendee_id|
+        next if new_attendees.include?(attendee_id.to_s)
+
+        invitation = @event.invitations.where(attendee_id: attendee_id)
+        @event.invitations.destroy(invitation)
       end
       flash[:notice] = "Your event and invitations were updated!"
       redirect_to @event
