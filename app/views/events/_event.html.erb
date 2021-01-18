@@ -8,7 +8,7 @@
         <span class="icon">
           <i class="fa fa-calendar" aria-hidden="true"></i>
         </span>
-        <%= event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> - 
+        <%= event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> -
         <% if (event.start_time.to_date - event.end_time.to_date).to_i == 0 %>
           <%= event.end_time.strftime("%l:%M %P")%>
         <% else %>

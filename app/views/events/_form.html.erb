@@ -1,4 +1,4 @@
-<%= form_with model: @event do |f| %>
+<%= form_with model: @event, local: true do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2 class="has-text-danger"><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -17,24 +17,24 @@
   <% end %>
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title, 
-                      autofocus: true, 
+    <%= f.text_field :title,
+                      autofocus: true,
                       required: true,
-                      placeholder: "Surprise Party",  
+                      placeholder: "Surprise Party",
                       class: "input" %>
   </div>
 
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description, 
+    <%= f.text_area :description,
                     placeholder: "Description or other important details",
                     class: "input text-input" %>
   </div>
 
   <div class="field">
     <%= f.label :location %><br />
-    <%= f.text_field :location, 
-                      placeholder: "My house, restaurant, etc.", 
+    <%= f.text_field :location,
+                      placeholder: "My house, restaurant, etc.",
                       required: true,
                       class: "input" %>
   </div>
@@ -49,29 +49,22 @@
 
   <div class="field">
     <%= f.label "End Date and Time" %><br />
-    <%= f.datetime_field :end_time, 
-                          required: true, 
+    <%= f.datetime_field :end_time,
+                          required: true,
                           class: "input" %>
   </div>
 
   <div class="field">
     <%= f.label "Invitations" %><br />
-    <%# Do I need below 'invitations to be a column name in Event model? %>
     <%= f.fields_for :invitations do |invite_form| %>
-      <%#= invite_form.select(:attendee_id, @user_options) %>
-      <%= invite_form.collection_check_boxes :attendee_id, @users, :id, :name, { include_hidden: false } do |option| %>
-        <p> 
+      <%= invite_form.collection_check_boxes :attendee_id, @users, :id, :name, { checked: @event.attendee_ids } do |option| %>
+        <p>
           <%= option.check_box %>
           <%= option.label %>
         </p>
       <% end %>
     <% end %>
   </div>
-
-  <%# Do I need any hidden fields? %>
-  <%#= f.hidden_field :?_id, ?.id %>
-
-  <%# Do I need to be able to remove/delete? %>
 
   <div class="actions">
     <%= f.submit "Submit", class:"button is-link is-fullwidth" %>
