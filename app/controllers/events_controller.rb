@@ -14,8 +14,7 @@ class EventsController < ApplicationController
     @event = Event.new
     # This tells the form to display the invitation section
     @event.invitations.build
-    # Remove the current user from this list?
-    @users = User.all
+    @attendee_options = possible_attendees
   end
   
   def create
@@ -29,15 +28,14 @@ class EventsController < ApplicationController
       flash[:notice] = "Your event and invitations were created!"
       redirect_to @event
     else
-      @users = User.all
+      @attendee_options = possible_attendees
       render :new
     end
   end
 
   def edit
     @event = Event.find(params[:id])
-    # Remove the current user from this list?
-    @users = User.all
+    @attendee_options = possible_attendees
   end
 
   def update
@@ -63,7 +61,7 @@ class EventsController < ApplicationController
       redirect_to @event
     else
       render :edit
-      @users = User.all
+      @attendee_options = possible_attendees
     end
   end
 
@@ -85,5 +83,9 @@ class EventsController < ApplicationController
     def correct_creator
       @event = Event.find(params[:id])
       redirect_to(root_url) unless current_user == @event.creator
+    end
+
+    def possible_attendees
+      User.all.reject { |user| user == current_user  }
     end
 end
