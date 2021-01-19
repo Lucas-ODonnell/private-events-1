@@ -28,6 +28,8 @@ class Event < ApplicationRecord
   scope :upcoming, -> { where('start_time > ?', Time.zone.now) }
   scope :past, -> { where('end_time < ?', Time.zone.now) }
 
+  private
+
   def start_time_must_be_in_future
     unless start_time > Time.zone.now
       errors.add(:start_time, "must be in the future.")

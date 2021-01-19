@@ -9,17 +9,17 @@
 
           <div class="field">
             <%= f.label :name %><br />
-            <%= f.text_field :name, 
-                              autofocus: true, 
-                              placeholder: "Jane Doe", 
+            <%= f.text_field :name,
+                              autofocus: true,
+                              placeholder: "Jane Doe",
                               required: true,
                               class: "input" %>
           </div>
 
           <div class="field">
             <%= f.label :email %><br />
-            <%= f.email_field :email, 
-                              placeholder: "user@example.com", 
+            <%= f.email_field :email,
+                              placeholder: "user@example.com",
                               required: true,
                               class: "input" %>
           </div>
@@ -29,16 +29,16 @@
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, 
-                                 placeholder: "******", 
+            <%= f.password_field :password,
+                                 placeholder: "******",
                                  required: true,
                                  class: "input" %>
           </div>
 
           <div class="field">
             <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, 
-                                 placeholder: "******", 
+            <%= f.password_field :password_confirmation,
+                                 placeholder: "******",
                                  required: true,
                                  class: "input" %>
           </div>
@@ -46,7 +46,7 @@
           <div class="actions">
             <%= f.submit "Sign up", class:"button is-link is-fullwidth" %>
           </div>
-        <% end %>                           
+        <% end %>
       </div>
     </div>
   </div>

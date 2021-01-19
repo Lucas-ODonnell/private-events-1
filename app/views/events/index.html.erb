@@ -4,7 +4,7 @@
       <div class="column is-9">
         <h3 class="title is-3">All Upcoming Events</h3>
         <div class="columns is-multiline">
-          <%= render @events.upcoming %> 
+          <%= render @events.upcoming %>
         </div>
         <hr>
         <h4 class="title is-4">All Past Events</h4>
@@ -12,7 +12,7 @@
           <div>
             <p>
               <%= event.title %>
-                on 
+                on
               <%= event.start_time.strftime("%b %-d, %Y")%>
               <%= link_to event_path(id: event.id), :class=> "Users" do %>
                   <i class="fa fa-info-circle" aria-hidden="true", target="_blank"></i>

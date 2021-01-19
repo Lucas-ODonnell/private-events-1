@@ -8,13 +8,13 @@
 
           <div class="field">
             <%= f.label :name %><br />
-            <%= f.text_field :name, 
+            <%= f.text_field :name,
                               class: "input" %>
           </div>
 
           <div class="field">
             <%= f.label :email %><br />
-            <%= f.email_field :email, 
+            <%= f.email_field :email,
                               class: "input" %>
           </div>
 
@@ -24,7 +24,7 @@
 
           <div class="field">
             <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-            <%= f.password_field :password, 
+            <%= f.password_field :password,
                                  class: "input" %>
             <% if @minimum_password_length %>
               <br />
@@ -34,13 +34,13 @@
 
           <div class="field">
             <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, 
+            <%= f.password_field :password_confirmation,
                                  class: "input" %>
           </div>
 
           <div class="field">
             <%= f.label :current_password %> <i>(to confirm your changes)</i><br />
-            <%= f.password_field :current_password, 
+            <%= f.password_field :current_password,
                                  required: true,
                                  class: "input" %>
           </div>
