@@ -21,9 +21,8 @@ class EventsController < ApplicationController
     @event = current_user.created_events.build(event_params)
     
     if @event.save
-      invitation_params[:invitations][:attendee_id].each do |attendee_id|
-        @event.invitations.create(attendee_id: attendee_id)
-      end
+      # Service Object for invitations "Through" Table
+      InvitationManager.new(@event, invitation_params).create_invitations
 
       flash[:notice] = "Your event and invitations were created!"
       redirect_to @event
@@ -42,21 +41,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
-      previous_attendees = @event.attendees.ids
-      new_attendees = invitation_params[:invitations][:attendee_id]
-      # Add invitations to new people
-      new_attendees.each do |attendee_id|
-        next if previous_attendees.include?(attendee_id.to_i)
-
-        @event.invitations.create(attendee_id: attendee_id)
-      end
-      # Remove destroy invitations for un-checked
-      previous_attendees.each do |attendee_id|
-        next if new_attendees.include?(attendee_id.to_s)
-
-        invitation = @event.invitations.where(attendee_id: attendee_id)
-        @event.invitations.destroy(invitation)
-      end
+      # Service Object for invitations "Through" Table
+      InvitationManager.new(@event, invitation_params).update_invitations
+      
       flash[:notice] = "Your event and invitations were updated!"
       redirect_to @event
     else
