@@ -32,3 +32,13 @@ select.datetime {
 .text-input {
   height: 5em;
 }
+
+.form-date-time {
+  display: flex;
+  > * {
+   flex: 1 1 auto;
+  }
+  :first-child {
+    margin-right: 1.5em;
+  }
+}

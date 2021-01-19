@@ -28,11 +28,13 @@
             <span class="icon">
               <i class="fa fa-calendar" aria-hidden="true"></i>
             </span>
-            <%= @event.start_time.strftime("%b %-d, %Y at %l:%M %P")%> -
-            <% if (@event.start_time.to_date - @event.end_time.to_date).to_i == 0 %>
-              <%= @event.end_time.strftime("%l:%M %P")%>
+            <%= @event.start_date.strftime("%b %-d, %Y")%>
+            <%= @event.start_time.strftime(" at %l:%M %P")%> -
+            <% if (@event.start_date - @event.end_date).to_i == 0 %>
+              <%= @event.end_time.strftime("%l:%M %P") %>
             <% else %>
-              <%= @event.end_time.strftime("%b %-d, %Y at %l:%M %P")%>
+              <%= @event.end_date.strftime("%b %-d, %Y")%>
+              <%= @event.end_time.strftime(" at %l:%M %P")%>
             <% end %>
           </p>
         </div>

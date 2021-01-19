@@ -45,37 +45,47 @@ Event.create!(creator_id: '1',
               title: 'Ice Skating Party',
               description: 'We will ice skate first and then warm up over hot drinks at Starbucks',
               location: 'Millennium Park',
-              start_time: Time.zone.local(2022, 2, 1, 18),
-              end_time: Time.zone.local(2022, 2, 1, 22))
+              start_date: Date.new(2022, 2, 1),
+              start_time: Time.zone.local(1999, 12, 31, 18),
+              end_date: Date.new(2022, 2, 1),
+              end_time: Time.zone.local(1999, 12, 31, 22))
 
 Event.create!(creator_id: '2',
               title: 'Picnic Party',
               description: 'We will explore the zoo and enjoy a sack luck together',
               location: 'Brookfield Zoo',
-              start_time: Time.zone.local(2022, 4, 15, 10, 30),
-              end_time: Time.zone.local(2022, 4, 15, 16))
+              start_date: Date.new(2022, 4, 15),
+              start_time: Time.zone.local(1999, 12, 31, 10, 30),
+              end_date: Date.new(2022, 4, 15),
+              end_time: Time.zone.local(1999, 12, 31, 16))
 
 Event.create!(creator_id: '7',
               title: 'Memorial Day Cookout',
               description: 'We will grill hamburgers & hot dogs. Please bring a side dish to share.',
               location: 'Grant Park',
-              start_time: Time.zone.local(2022, 5, 29, 11),
-              end_time: Time.zone.local(2022, 5, 29, 14, 30))
+              start_date: Date.new(2022, 5, 29),
+              start_time: Time.zone.local(1999, 12, 31, 11),
+              end_date: Date.new(2022, 5, 29),
+              end_time: Time.zone.local(1999, 12, 31, 14, 30))
 
-past_events = [ { 
+past_events = [ {
                 creator_id: '1',
                 title: "New Year's Party",
                 description: 'Kick off the new year with friends and family!',
                 location: 'My house',
-                start_time: Time.zone.local(2020, 12, 31, 20),
-                end_time: Time.zone.local(2021, 1, 1, 1, 30) 
-              }, 
+                start_date: Date.new(2020, 12, 31),
+                start_time: Time.zone.local(1999, 12, 31, 20),
+                end_date: Date.new(2021, 1, 1),
+                end_time: Time.zone.local(1999, 12, 31, 1, 30)
+              },
               { creator_id: '7',
                 title: 'Birthday Party',
                 description: 'We will start the party in the Funhouse Maze and end with Gelato!',
                 location: 'Navy Pier',
-                start_time: Time.zone.local(2020, 3, 9, 13),
-                end_time: Time.zone.local(2020, 3, 9, 17)
+                start_date: Date.new(2020, 3, 9),
+                start_time: Time.zone.local(1999, 12, 31, 13),
+                end_date: Date.new(2020, 3, 9),
+                end_time: Time.zone.local(1999, 12, 31, 17)
               }
              ]
 
