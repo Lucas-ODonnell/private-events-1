@@ -39,19 +39,39 @@
                       class: "input" %>
   </div>
 
-  <div class="field">
-    <%= f.label "Start Date and Time" %><br />
-    <%= f.datetime_field :start_time,
-                          required: true,
-                          class: "input" %>
-  </div>
+  <div class="field form-date-time">
+    <div>
+      <%= f.label "Start Date" %><br />
+      <%= f.date_field :start_date,
+                       required: true,
+                       placeholder: "Use the date picker",
+                       class: "input" %>
+    </div>
+    <div>
+      <%= f.label "Start Time" %><br />
+      <%= f.time_field :start_time,
+                       required: true,
+                       placeholder: "on Chrome or Firefox",
+                       class: "input" %>
+    </div>
+   </div>
 
-  <div class="field">
-    <%= f.label "End Date and Time" %><br />
-    <%= f.datetime_field :end_time,
-                          required: true,
-                          class: "input" %>
-  </div>
+  <div class="field form-date-time">
+    <div>
+      <%= f.label "End Date" %><br />
+      <%= f.date_field :end_date,
+                       required: true,
+                       placeholder: "Use the date picker",
+                       class: "input" %>
+    </div>
+    <div>
+      <%= f.label "End Time" %><br />
+      <%= f.time_field :end_time,
+                       required: true,
+                       placeholder: "on Chrome or Firefox",
+                       class: "input" %>
+    </div>
+   </div>
 
   <div class="field">
     <%= f.label "Invitations" %><br />

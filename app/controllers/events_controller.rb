@@ -47,8 +47,8 @@ class EventsController < ApplicationController
       flash[:notice] = "Your event and invitations were updated!"
       redirect_to @event
     else
-      render :edit
       @attendee_options = possible_attendees
+      render :edit
     end
   end
 
@@ -57,7 +57,9 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:creator_id,
                                     :title,
+                                    :start_date,
                                     :start_time,
+                                    :end_date,
                                     :end_time,
                                     :location,
                                     :description)

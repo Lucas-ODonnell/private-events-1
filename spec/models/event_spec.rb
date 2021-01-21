@@ -4,9 +4,11 @@
 #
 #  id          :integer          not null, primary key
 #  description :text
-#  end_time    :datetime
+#  end_date    :date
+#  end_time    :time
 #  location    :string
-#  start_time  :datetime
+#  start_date  :date
+#  start_time  :time
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

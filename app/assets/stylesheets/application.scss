@@ -17,18 +17,28 @@
 @import "bulma";
 @import "font-awesome";
 
+// Vertically center burger menu
 .navbar-burger {
   height: auto;
 }
 
-select.datetime {
-  width: auto;
-}
-
+// Spaces out invitations on Event form
 .field {
   line-height: 38px;
 }
 
+// Description input field on Event form
 .text-input {
   height: 5em;
+}
+
+// Starting & Ending times on Event form
+.form-date-time {
+  display: flex;
+  > * {
+   flex: 1 1 auto;
+  }
+  :first-child {
+    margin-right: 1.5em;
+  }
 }
