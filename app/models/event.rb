@@ -17,11 +17,12 @@
 class Event < ApplicationRecord
   validates :title, presence: true
   validates :location, presence: true
-  validates :start_date, presence: true
   validates :start_time, presence: true
-  validates :end_date, presence: true
   validates :end_time, presence: true
-  validate :start_date_must_be_in_future, :end_must_be_after_start
+  validate :existance_of_date_time,
+           :correct_date_format,
+           :start_date_must_be_in_future,
+           :end_must_be_after_start
 
   belongs_to :creator, class_name: 'User'
   has_many :invitations, foreign_key: :event_id
@@ -32,13 +33,39 @@ class Event < ApplicationRecord
 
   private
 
+  # Refactor code to not be so repetitive
+
+  def existance_of_date_time
+    unless end_date || end_time || start_time || start_date
+      errors.add(:dates, "are invalid. Use date picker on Chrome or Firefox.")
+    end
+  end
+
+  def correct_date_format
+    unless valid_dates? && valid_times?
+      errors.add(:dates, "are invalid. Use date picker on Chrome or Firefox.")
+    end
+  end
+
+  def valid_dates?
+    start_date.is_a?(Date) && end_date.is_a?(Date)
+  end
+
+  def valid_times?
+    start_time.is_a?(Time) && end_time.is_a?(Time)
+  end
+
   def start_date_must_be_in_future
+    return unless valid_dates? & valid_times?
+
     unless start_date > Time.zone.today
       errors.add(:start_date, "must be in the future.")
     end
   end
 
   def end_must_be_after_start
+    return unless valid_dates? & valid_times?
+
     if start_date == end_date && start_time > end_time
       errors.add(:end_time, "must be after start time.")
     elsif start_date > end_date
