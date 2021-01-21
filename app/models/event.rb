@@ -33,8 +33,6 @@ class Event < ApplicationRecord
 
   private
 
-  # Refactor code to not be so repetitive
-
   def existance_of_date_time
     unless end_date || end_time || start_time || start_date
       errors.add(:dates, "are invalid. Use date picker on Chrome or Firefox.")
@@ -56,7 +54,7 @@ class Event < ApplicationRecord
   end
 
   def start_date_must_be_in_future
-    return unless valid_dates? & valid_times?
+    return unless errors.messages.empty?
 
     unless start_date > Time.zone.today
       errors.add(:start_date, "must be in the future.")
@@ -64,7 +62,7 @@ class Event < ApplicationRecord
   end
 
   def end_must_be_after_start
-    return unless valid_dates? & valid_times?
+    return unless errors.messages.empty?
 
     if start_date == end_date && start_time > end_time
       errors.add(:end_time, "must be after start time.")

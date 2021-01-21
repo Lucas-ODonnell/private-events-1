@@ -47,8 +47,8 @@ class EventsController < ApplicationController
       flash[:notice] = "Your event and invitations were updated!"
       redirect_to @event
     else
-      render :edit
       @attendee_options = possible_attendees
+      render :edit
     end
   end
 
