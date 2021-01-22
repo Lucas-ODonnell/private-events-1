@@ -1,0 +1,35 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <h2 class="title is-2">Update Invitation</h2>
+        <%= form_with model: @invitation, local: true do |f| %>
+          <% if @invitation.errors.any? %>
+            <div id="error_explanation">
+              <h2 class="has-text-danger"><%= pluralize(@invitation.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+              <ul class="has-text-danger">
+                <% @invitation.errors.each do |error| %>
+                  <li>
+                    <span class="icon">
+                      <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                    </span>
+                    <%= error.full_message %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="field">
+            <%= f.label :status %><br />
+            <%= f.select :status, @status_options, class: "input" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Submit", class:"button is-link" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

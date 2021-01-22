@@ -1,0 +1,23 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-9">
+        <h3 class="title is-3">All Your Invitations</h3>
+        <% @invitations.each do |invitation| %>
+          <div class="block">
+            <p>
+              <strong>Event:</strong>
+              <%= invitation.event.title %>
+            </p>
+            <p>
+              Status:
+              <%= invitation.status.humanize.capitalize %>
+            </p>
+              <%= link_to 'View Invitation', invitation_url(id: invitation.id) %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

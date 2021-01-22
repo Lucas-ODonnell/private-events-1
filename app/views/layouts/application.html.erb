@@ -42,6 +42,7 @@
               </a>
               <div class="navbar-dropdown">
                 <%= link_to 'My Events', user_path(id: current_user.id), class: "navbar-item" %>
+                <%= link_to 'My Invitations', invitations_path, class: "navbar-item" %>
                 <%= link_to 'Create a new Event', new_event_path, class: "navbar-item" %>
                 <hr class="dropdown-divider">
                 <%= link_to 'View all Events', events_path, class: "navbar-item" %>

@@ -3,7 +3,7 @@
 # Table name: invitations
 #
 #  id          :integer          not null, primary key
-#  status      :integer
+#  status      :integer          default("no_response")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  attendee_id :integer

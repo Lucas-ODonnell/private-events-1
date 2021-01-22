@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_01_19_202559) do
   create_table "invitations", force: :cascade do |t|
     t.integer "attendee_id"
     t.integer "event_id"
-    t.integer "status"
+    t.integer "status", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
