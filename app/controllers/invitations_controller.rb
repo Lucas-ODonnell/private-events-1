@@ -26,6 +26,21 @@ class InvitationsController < ApplicationController
     end
   end
 
+  def edit_multiple
+    @invitations = possible_invitations
+    @status_options = possible_statuses
+  end
+
+  def update_multiple
+    @invitations = Invitation.update(params[:invitations].keys, params[:invitations].values)
+    @invitations.reject! { |invite| invite.errors.empty? }
+    if @invitations.empty?
+      redirect_to invitations_path
+    else
+      render "edit_multiple"
+    end
+  end
+
   private
 
     def possible_statuses

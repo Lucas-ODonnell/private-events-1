@@ -1,0 +1,35 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <h2 class="title is-2">My Invitations</h2>
+
+        <%= form_tag update_multiple_invitations_path, method: :put do %>
+          <% @invitations.each do |invitation| %>
+            <h4 class="title is-4"><%= invitation.event.title  %></h4>
+            <%= fields_for "invitations[]", invitation do |f| %>
+              <% if invitation.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+                  <ul>
+                  <% invitation.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <div class="field">
+                <%= f.label :status %><br />
+                <%= f.select :status, @status_options, class: "input" %>
+              </div>
+            <% end %>
+          <% end %>
+          <div class="actions">
+            <%= submit_tag "Update" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</section>
