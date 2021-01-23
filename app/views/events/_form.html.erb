@@ -73,11 +73,11 @@
     </div>
    </div>
 
-  <div class="field">
-    <%= f.label "Invitations" %><br />
+  <div class="field invite-names">
+    <p><strong>Invitation Options:</strong></p>
     <%= f.fields_for :invitations do |invite_form| %>
       <%= invite_form.collection_check_boxes :attendee_id, @attendee_options, :id, :name, { checked: @event.attendee_ids } do |option| %>
-        <p>
+        <p class="invite-names">
           <%= option.check_box %>
           <%= option.label %>
         </p>
