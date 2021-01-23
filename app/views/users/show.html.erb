@@ -6,27 +6,9 @@
         <div class="columns is-multiline">
           <%= render @user.created_events.upcoming %>
         </div>
+        <hr>
         <h4 class="title is-4">Past Parties</h4>
         <% @user.created_events.past.each do |event| %>
-          <div>
-            <p>
-              <%= event.title %>
-                on
-              <%= event.start_date.strftime("%b %-d, %Y")%>
-              <%= event.start_time.strftime(" at %l:%M %P")%>
-              <%= link_to event_path(id: event.id), :class=> "Users" do %>
-                  <i class="fa fa-info-circle" aria-hidden="true", target="_blank"></i>
-              <% end %>
-            </p>
-          </div>
-        <% end %>
-        <hr>
-        <h3 class="title is-3">My Invitations</h3>
-        <div class="columns is-multiline">
-          <%= render @user.attended_events.upcoming %>
-        </div>
-        <h4 class="title is-4">Past Invitations</h4>
-        <% @user.attended_events.past.each do |event| %>
           <div>
             <p>
               <%= event.title %>

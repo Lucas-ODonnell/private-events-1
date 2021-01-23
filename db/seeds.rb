@@ -95,6 +95,7 @@ past_events.each do |event|
 end
 
 Invitation.create!(event_id: '1',
+                   status: 2,
                    attendee_id: '2')
 
 Invitation.create!(event_id: '1',
@@ -104,6 +105,7 @@ Invitation.create!(event_id: '1',
                    attendee_id: '4')
 
 Invitation.create!(event_id: '1',
+                   status: 3,
                    attendee_id: '5')
 
 Invitation.create!(event_id: '1',
@@ -113,6 +115,7 @@ Invitation.create!(event_id: '1',
                    attendee_id: '7')
 
 Invitation.create!(event_id: '2',
+                   status: 2,
                    attendee_id: '1')
 
 Invitation.create!(event_id: '2',
@@ -125,6 +128,7 @@ Invitation.create!(event_id: '2',
                    attendee_id: '5')
 
 Invitation.create!(event_id: '2',
+                   status: 2,
                    attendee_id: '6')
 
 Invitation.create!(event_id: '2',

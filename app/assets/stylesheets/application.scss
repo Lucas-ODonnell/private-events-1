@@ -22,17 +22,19 @@
   height: auto;
 }
 
-// Spaces out invitations on Event form
-.field {
+// New Event Form
+
+// Spacing for invitation names
+.invite-names {
   line-height: 38px;
 }
 
-// Description input field on Event form
+// Description input field
 .text-input {
   height: 5em;
 }
 
-// Starting & Ending times on Event form
+// Starting & Ending times
 .form-date-time {
   display: flex;
   > * {
