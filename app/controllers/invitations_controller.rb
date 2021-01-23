@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InvitationsController < ApplicationController
   # before_action :authenticate_user!, only: [:index]
   # before_action :correct_creator, only: [:edit, :update]
@@ -21,7 +23,7 @@ class InvitationsController < ApplicationController
   private
 
     def possible_statuses
-      Invitation.statuses.map{ |k, v| [k.humanize.capitalize, k] }
+      Invitation.statuses.map { |k, _v| [k.humanize.capitalize, k] }
     end
 
     def invitation_params
@@ -34,9 +36,8 @@ class InvitationsController < ApplicationController
       end
     end
 
-    # def correct_creator
-    #   @event = Event.find(params[:id])
-    #   redirect_to(root_url) unless current_user == @event.creator
-    # end
-
+  # def correct_creator
+  #   @event = Event.find(params[:id])
+  #   redirect_to(root_url) unless current_user == @event.creator
+  # end
 end

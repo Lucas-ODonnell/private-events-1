@@ -1,0 +1,46 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+  - app/channels/**/*
+  - db/schema.rb
+  - db/seeds.rb
+  - bin/**/*
+  - vendor/assets/**/*
+  - lib/templates/**/*
+  - app/views/**/*.xlsx.axlsx
+  - node_modules/**/*
+
+Style/StringLiterals:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - lib/tasks/*.rake
+    - config/routes.rb
+    - config/**/*
+    - Gemfile
+    - Guardfile
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+  Exclude:
+    - config/routes.rb
+
+Layout/LineLength:
+  Max: 100
+  Exclude:
+    - Rakefile
+    - Gemfile
+    - config/**/*
+    - lib/tasks/**/*
+    - test/test_helper.rb
+    - db/migrate/*
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/test_helper.rb
+
+Style/Documentation:
+  Enabled: false

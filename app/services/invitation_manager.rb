@@ -1,5 +1,6 @@
-class InvitationManager
+# frozen_string_literal: true
 
+class InvitationManager
   def initialize(event, params)
     @event = event
     @attendee_ids = params[:invitations][:attendee_id]

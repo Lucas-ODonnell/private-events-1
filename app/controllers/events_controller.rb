@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show]
-  before_action :correct_creator, only: [:edit, :update]
+  before_action :authenticate_user!, only: %i[new create show]
+  before_action :correct_creator, only: %i[edit update]
 
   def index
     @events = Event.all
@@ -17,10 +19,10 @@ class EventsController < ApplicationController
     @event.invitations.build
     @attendee_options = possible_attendees
   end
-  
+
   def create
     @event = current_user.created_events.build(event_params)
-    
+
     if @event.save
       # Service Object for invitations "Through" Table
       InvitationManager.new(@event, invitation_params).create_invitations
@@ -44,7 +46,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       # Service Object for invitations "Through" Table
       InvitationManager.new(@event, invitation_params).update_invitations
-      
+
       flash[:notice] = "Your event and invitations were updated!"
       redirect_to @event
     else
@@ -54,7 +56,7 @@ class EventsController < ApplicationController
   end
 
   private
-  
+
     def event_params
       params.require(:event).permit(:creator_id,
                                     :title,
@@ -67,7 +69,7 @@ class EventsController < ApplicationController
     end
 
     def invitation_params
-      params.require(:event).permit(invitations: [:attendee_id => []])
+      params.require(:event).permit(invitations: [attendee_id: []])
     end
 
     def correct_creator
@@ -76,6 +78,6 @@ class EventsController < ApplicationController
     end
 
     def possible_attendees
-      User.all.reject { |user| user == current_user  }
+      User.all.reject { |user| user == current_user }
     end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: invitations
@@ -10,12 +12,12 @@
 #  event_id    :integer
 #
 class Invitation < ApplicationRecord
-  belongs_to :attendee, foreign_key: :attendee_id, class_name: 'User'
-  belongs_to :event, foreign_key: :event_id
+  belongs_to :attendee, class_name: 'User'
+  belongs_to :event
 
   enum status: {
     no_response: 1,
     attending: 2,
-    not_attending: 3,
+    not_attending: 3
   }
 end

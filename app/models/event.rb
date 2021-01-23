@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: events
@@ -25,7 +27,7 @@ class Event < ApplicationRecord
            :end_must_be_after_start
 
   belongs_to :creator, class_name: 'User'
-  has_many :invitations, foreign_key: :event_id
+  has_many :invitations, dependent: :destroy
   has_many :attendees, through: :invitations, source: :attendee
 
   scope :upcoming, -> { where('start_date >= ?', Time.zone.today) }
@@ -33,41 +35,39 @@ class Event < ApplicationRecord
 
   private
 
-  def existance_of_date_time
-    unless end_date || end_time || start_time || start_date
+    def existance_of_date_time
+      return unless end_date || end_time || start_time || start_date
+
       errors.add(:dates, "are invalid. Use date picker on Chrome or Firefox.")
     end
-  end
 
-  def correct_date_format
-    unless valid_dates? && valid_times?
+    def correct_date_format
+      return unless valid_dates? && valid_times?
+
       errors.add(:dates, "are invalid. Use date picker on Chrome or Firefox.")
     end
-  end
 
-  def valid_dates?
-    start_date.is_a?(Date) && end_date.is_a?(Date)
-  end
-
-  def valid_times?
-    start_time.is_a?(Time) && end_time.is_a?(Time)
-  end
-
-  def start_date_must_be_in_future
-    return unless errors.messages.empty?
-
-    unless start_date > Time.zone.today
-      errors.add(:start_date, "must be in the future.")
+    def valid_dates?
+      start_date.is_a?(Date) && end_date.is_a?(Date)
     end
-  end
 
-  def end_must_be_after_start
-    return unless errors.messages.empty?
-
-    if start_date == end_date && start_time > end_time
-      errors.add(:end_time, "must be after start time.")
-    elsif start_date > end_date
-      errors.add(:end_date, "must be the same or after start date.")
+    def valid_times?
+      start_time.is_a?(Time) && end_time.is_a?(Time)
     end
-  end
+
+    def start_date_must_be_in_future
+      return unless errors.messages.empty?
+
+      errors.add(:start_date, "must be in the future.") unless start_date > Time.zone.today
+    end
+
+    def end_must_be_after_start
+      return unless errors.messages.empty?
+
+      if start_date == end_date && start_time > end_time
+        errors.add(:end_time, "must be after start time.")
+      elsif start_date > end_date
+        errors.add(:end_date, "must be the same or after start date.")
+      end
+    end
 end
