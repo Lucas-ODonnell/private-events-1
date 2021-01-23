@@ -35,7 +35,8 @@ class InvitationsController < ApplicationController
     @invitations = Invitation.update(params[:invitations].keys, params[:invitations].values)
     @invitations.reject! { |invite| invite.errors.empty? }
     if @invitations.empty?
-      redirect_to invitations_path
+      flash[:notice] = "Your RSVP status was updated!"
+      redirect_to edit_multiple_invitations_path
     else
       render "edit_multiple"
     end
@@ -52,7 +53,9 @@ class InvitationsController < ApplicationController
     end
 
     def possible_invitations
-      Invitation.all.select { |invite| invite.attendee_id == current_user.id  }
+      Invitation.all.select do |invite|
+        invite.attendee_id == current_user.id && invite.event.start_date >= Time.zone.today
+      end
     end
 
     # def correct_creator
