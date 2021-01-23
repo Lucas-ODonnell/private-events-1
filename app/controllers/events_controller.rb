@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @invitations = @event.invitations.sort_by(&:status)
+    @invitations = @event.invitations.includes([:attendee]).sort_by(&:status)
   end
 
   def new

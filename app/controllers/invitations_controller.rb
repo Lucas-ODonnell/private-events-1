@@ -5,6 +5,7 @@ class InvitationsController < ApplicationController
   # before_action :correct_creator, only: [:edit, :update]
 
   def edit_multiple
+    # .includes([:event])
     @invitations = possible_invitations
     @status_options = possible_statuses
   end
@@ -31,7 +32,7 @@ class InvitationsController < ApplicationController
     end
 
     def possible_invitations
-      Invitation.all.select do |invite|
+      Invitation.all.includes([event: [:creator]]).select do |invite|
         invite.attendee_id == current_user.id && invite.event.start_date >= Time.zone.today
       end
     end
