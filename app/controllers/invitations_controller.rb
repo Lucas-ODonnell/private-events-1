@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 class InvitationsController < ApplicationController
-  # before_action :authenticate_user!, only: [:index]
-  # before_action :correct_creator, only: [:edit, :update]
+  before_action :authenticate_user!, only: %i[edit_multiple update_multiple]
 
   def edit_multiple
-    # .includes([:event])
     @invitations = possible_invitations
     @status_options = possible_statuses
   end
@@ -36,9 +34,4 @@ class InvitationsController < ApplicationController
         invite.attendee_id == current_user.id && invite.event.start_date >= Time.zone.today
       end
     end
-
-  # def correct_creator
-  #   @event = Event.find(params[:id])
-  #   redirect_to(root_url) unless current_user == @event.creator
-  # end
 end
