@@ -3,6 +3,7 @@
 class InvitationsController < ApplicationController
   before_action :authenticate_user!, only: %i[edit_multiple update_multiple]
 
+  # Instead of custom methods, look into name-spaced controllers (example: /user/#/invitations)
   def edit_multiple
     @invitations = possible_invitations
     @status_options = possible_statuses

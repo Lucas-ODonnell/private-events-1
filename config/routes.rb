@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   root 'events#index'
 
-  resources :users, only: [:show]
+  resources :users, only: %i[show]
   resources :events, only: %i[index new create show edit update]
 
   resources :invitations do

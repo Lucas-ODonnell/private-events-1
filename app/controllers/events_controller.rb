@@ -9,7 +9,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    # Find_by will return an empty collection (instead of returning nil & throwing an error)
+    @event = Event.find_by(id: params[:id])
     @invitations = @event.invitations.includes([:attendee]).sort_by(&:status)
   end
 

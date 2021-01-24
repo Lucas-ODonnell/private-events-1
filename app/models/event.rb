@@ -17,6 +17,10 @@
 #  creator_id  :integer
 #
 class Event < ApplicationRecord
+  belongs_to :creator, class_name: 'User'
+  has_many :invitations, dependent: :destroy
+  has_many :attendees, through: :invitations, source: :attendee
+
   validates :title, presence: true
   validates :location, presence: true
   validates :start_time, presence: true
@@ -25,10 +29,6 @@ class Event < ApplicationRecord
            :correct_date_format,
            :start_date_must_be_in_future,
            :end_must_be_after_start
-
-  belongs_to :creator, class_name: 'User'
-  has_many :invitations, dependent: :destroy
-  has_many :attendees, through: :invitations, source: :attendee
 
   scope :upcoming, -> { where('start_date >= ?', Time.zone.today) }
   scope :past, -> { where('start_date < ?', Time.zone.today) }
