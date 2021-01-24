@@ -30,6 +30,7 @@ class EventsController < ApplicationController
       flash[:notice] = "Your event and invitations were created!"
       redirect_to @event
     else
+      @attendees = invitation_params[:invitations][:attendee_id]
       @attendee_options = possible_attendees
       render :new
     end
@@ -38,6 +39,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @attendee_options = possible_attendees
+    @attendees = @event.attendee_ids
   end
 
   def update
@@ -51,6 +53,7 @@ class EventsController < ApplicationController
       redirect_to @event
     else
       @attendee_options = possible_attendees
+      @attendees = invitation_params[:invitations][:attendee_id]
       render :edit
     end
   end

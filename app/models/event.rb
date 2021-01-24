@@ -36,23 +36,26 @@ class Event < ApplicationRecord
   private
 
     def existance_of_date_time
-      return unless end_date || end_time || start_time || start_date
+      return if end_date && end_time && start_time && start_date
 
       errors.add(:dates, "are invalid. Use date picker on Chrome or Firefox.")
     end
 
     def correct_date_format
-      return unless valid_dates? && valid_times?
+      valid_date_format
+      valid_time_format
+    end
+
+    def valid_date_format
+      return if start_date.is_a?(Date) && end_date.is_a?(Date)
 
       errors.add(:dates, "are invalid. Use date picker on Chrome or Firefox.")
     end
 
-    def valid_dates?
-      start_date.is_a?(Date) && end_date.is_a?(Date)
-    end
+    def valid_time_format
+      return if start_time.is_a?(Time) && end_time.is_a?(Time)
 
-    def valid_times?
-      start_time.is_a?(Time) && end_time.is_a?(Time)
+      errors.add(:times, "are invalid. Use time picker on Chrome or Firefox.")
     end
 
     def start_date_must_be_in_future

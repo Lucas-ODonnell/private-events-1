@@ -55,13 +55,15 @@
             <% end %>
           </ul>
         </div>
-        <% if @event.creator == current_user %>
-          <div class="block">
-            <div class="buttons">
+        <div class="block">
+          <div class="buttons">
+            <% if @event.creator == current_user %>
               <%= link_to 'Update Event', edit_event_path, class: "button is-dark is-outlined is-fullwidth" %>
-            </div>
+            <% elsif @event.attendees.include?(current_user) %>
+              <%= link_to 'Update RSVP', edit_multiple_invitations_path, class: "button is-dark is-outlined is-fullwidth" %>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
