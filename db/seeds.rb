@@ -68,26 +68,28 @@ Event.create!(creator_id: '7',
               end_date: Date.new(2022, 5, 29),
               end_time: Time.zone.local(1999, 12, 31, 14, 30))
 
-past_events = [ {
-                creator_id: '1',
-                title: "New Year's Party",
-                description: 'Kick off the new year with friends and family!',
-                location: 'My house',
-                start_date: Date.new(2020, 12, 31),
-                start_time: Time.zone.local(1999, 12, 31, 20),
-                end_date: Date.new(2021, 1, 1),
-                end_time: Time.zone.local(1999, 12, 31, 1, 30)
-              },
-              { creator_id: '7',
-                title: 'Birthday Party',
-                description: 'We will start the party in the Funhouse Maze and end with Gelato!',
-                location: 'Navy Pier',
-                start_date: Date.new(2020, 3, 9),
-                start_time: Time.zone.local(1999, 12, 31, 13),
-                end_date: Date.new(2020, 3, 9),
-                end_time: Time.zone.local(1999, 12, 31, 17)
-              }
-             ]
+past_events = [
+  {
+    creator_id: '1',
+    title: "New Year's Party",
+    description: 'Kick off the new year with friends and family!',
+    location: 'My house',
+    start_date: Date.new(2020, 12, 31),
+    start_time: Time.zone.local(1999, 12, 31, 20),
+    end_date: Date.new(2021, 1, 1),
+    end_time: Time.zone.local(1999, 12, 31, 1, 30)
+  },
+  {
+    creator_id: '7',
+    title: 'Birthday Party',
+    description: 'We will start the party in the Funhouse Maze and end with Gelato!',
+    location: 'Navy Pier',
+    start_date: Date.new(2020, 3, 9),
+    start_time: Time.zone.local(1999, 12, 31, 13),
+    end_date: Date.new(2020, 3, 9),
+    end_time: Time.zone.local(1999, 12, 31, 17)
+  }
+]
 
 past_events.each do |event|
   new_event = Event.new(event)
@@ -99,10 +101,12 @@ Invitation.create!(event_id: '1',
                    attendee_id: '2')
 
 Invitation.create!(event_id: '1',
-                   attendee_id: '3')
+                   attendee_id: '3',
+                   status: 3)
 
 Invitation.create!(event_id: '1',
-                   attendee_id: '4')
+                   attendee_id: '4',
+                   status: 2)
 
 Invitation.create!(event_id: '1',
                    status: 3,
@@ -119,13 +123,15 @@ Invitation.create!(event_id: '2',
                    attendee_id: '1')
 
 Invitation.create!(event_id: '2',
-                   attendee_id: '3')
+                   attendee_id: '3',
+                   status: 3)
 
 Invitation.create!(event_id: '2',
                    attendee_id: '4')
 
 Invitation.create!(event_id: '2',
-                   attendee_id: '5')
+                   attendee_id: '5',
+                   status: 2)
 
 Invitation.create!(event_id: '2',
                    status: 2,
@@ -138,54 +144,63 @@ Invitation.create!(event_id: '3',
                    attendee_id: '1')
 
 Invitation.create!(event_id: '3',
-                  attendee_id: '2')
+                   attendee_id: '2',
+                   status: 3)
 
 Invitation.create!(event_id: '3',
-                   attendee_id: '3')
+                   attendee_id: '3',
+                   status: 2)
 
 Invitation.create!(event_id: '3',
-                   attendee_id: '4')
+                   attendee_id: '4',
+                   status: 2)
 
 Invitation.create!(event_id: '3',
                    attendee_id: '5')
 
 Invitation.create!(event_id: '3',
-                   attendee_id: '6')
+                   attendee_id: '6',
+                   status: 2)
 
 Invitation.create!(event_id: '4',
                    attendee_id: '2')
 
 Invitation.create!(event_id: '4',
-                   attendee_id: '3')
+                   attendee_id: '3',
+                   status: 2)
 
 Invitation.create!(event_id: '4',
                    attendee_id: '4')
 
 Invitation.create!(event_id: '4',
-                   attendee_id: '5')
+                   attendee_id: '5',
+                   status: 2)
 
 Invitation.create!(event_id: '4',
-                   attendee_id: '6')
+                   attendee_id: '6',
+                   status: 3)
 
 Invitation.create!(event_id: '4',
                    attendee_id: '7')
 
 Invitation.create!(event_id: '5',
-                   attendee_id: '1')
+                   attendee_id: '1',
+                   status: 3)
 
 Invitation.create!(event_id: '5',
-                    attendee_id: '2')
+                   attendee_id: '2',
+                   status: 2)
 
 Invitation.create!(event_id: '5',
                    attendee_id: '3')
 
 Invitation.create!(event_id: '5',
-                   attendee_id: '4')
+                   attendee_id: '4',
+                   status: 2)
 
 Invitation.create!(event_id: '5',
-                   attendee_id: '5')
+                   attendee_id: '5',
+                   status: 2)
 
 Invitation.create!(event_id: '5',
                    attendee_id: '6')
-
-
